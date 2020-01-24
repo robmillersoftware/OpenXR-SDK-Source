@@ -185,7 +185,7 @@ elseif(WIN32)
     endif()
 
     # Need to copy DLL to client directories so clients can easily load it.
-    if(DYNAMIC_LOADER AND (CMAKE_GENERATOR MATCHES "^Visual Studio.*"))
+    if(NOT NOCOPY AND DYNAMIC_LOADER AND (CMAKE_GENERATOR MATCHES "^Visual Studio.*"))
         file(TO_NATIVE_PATH ${CMAKE_CURRENT_BINARY_DIR}/$<CONFIGURATION>/openxr_loader.dll COPY_DLL_SRC_PATH)
         file(TO_NATIVE_PATH ${CMAKE_CURRENT_BINARY_DIR}/$<CONFIGURATION>/openxr_loader.pdb COPY_PDB_SRC_PATH)
         file(TO_NATIVE_PATH ${CMAKE_CURRENT_BINARY_DIR}/../tests/hello_xr/$<CONFIGURATION>/
